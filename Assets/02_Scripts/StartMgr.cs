@@ -8,20 +8,21 @@ public class StartMgr : MonoBehaviour
     [SerializeField] private Rigidbody cameraRb;
     [SerializeField] private Button startBtn;
     [SerializeField] private Image UIImg;
-    [SerializeField] private float flashSpeed = 1.0f; // Controls how fast the image flashes (seconds per color)
-
+    [SerializeField] private float flashSpeed = 1.0f;
+    [SerializeField] private GameObject particalSystem;
     private Color normalColor;
     private bool isRed = false;
 
     void Start()
     {
         cameraRb.useGravity = false;
-        normalColor = UIImg.color; // Store the original color
+        normalColor = UIImg.color;
 
-        StartCoroutine(FlashImage()); // Start the coroutine for flashing
+        StartCoroutine(FlashImage());
         startBtn.onClick.AddListener(() =>
         {
             cameraRb.useGravity = true;
+            particalSystem.gameObject.SetActive(true);
             startBtn.gameObject.transform.localScale = Vector3.zero;
         });
     }
@@ -30,9 +31,9 @@ public class StartMgr : MonoBehaviour
     {
         while (true)
         {
-            isRed = !isRed; // Toggle the red flag
-            UIImg.color = isRed ? Color.red : normalColor; // Set color based on flag
-            yield return new WaitForSeconds(flashSpeed / 2.0f); // Wait half the flash speed
+            isRed = !isRed;
+            UIImg.color = isRed ? Color.red : normalColor;
+            yield return new WaitForSeconds(flashSpeed / 2.0f);
         }
     }
 
