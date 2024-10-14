@@ -17,20 +17,4 @@ public class PlayerCtrl : MonoBehaviour
         inventory = new Inventory();
         inventoryUI.SetInventory(inventory);
     }
-
-    // Update is called once per frame
-    private void Update()
-    {
-        Locomotion();
-    }
-    private void Locomotion()
-    {
-        Vector3 forward = cinemachineCamera.transform.forward;
-        forward.y = 0;
-        forward.Normalize();
-        characterController.Move(forward * v * Time.deltaTime * moveSpeed);
-        transform.rotation = Quaternion.LookRotation(forward);
-        if (Input.GetKey("W")) animator.SetInteger(hashMovement, 1);
-        else animator.SetInteger(hashMovement, 0);
-    }
 }

@@ -1,5 +1,3 @@
-
-using System.Runtime;
 using UnityEngine;
 
 public struct Item
@@ -18,11 +16,12 @@ public struct Item
     {
         return itemSO.itemName;
     }
-    public enum ItemType
-    {
-        MRE,
-        SolarPanel,
-        Rock,
-        Ore
-    }
+
+}
+public enum ItemType
+{
+    MRE,
+    SolarPanel,
+    Rock,
+    Ore
 }

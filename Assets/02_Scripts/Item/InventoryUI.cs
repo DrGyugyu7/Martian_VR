@@ -1,10 +1,11 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
     private Inventory inventory;
-    private Transform itemSlotTemplate;
-    private Transform slotContainer;
+    public GameObject itemSlotTemplate;
+    [SerializeField] private Transform itemSlotContainer;
     public void SetInventory(Inventory inventory)
     {
         this.inventory = inventory;
@@ -14,7 +15,8 @@ public class InventoryUI : MonoBehaviour
     {
         foreach (Item item in inventory.GetItemList())
         {
-            Instantiate(itemSlotTemplate, slotContainer);
+            itemSlotTemplate.GetComponent<Image>().sprite = item.GetSprite();
+            Instantiate(itemSlotTemplate, itemSlotContainer);
         }
     }
 }

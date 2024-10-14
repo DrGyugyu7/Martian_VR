@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MRE
   m_EditorClassIdentifier: 
   itemType: 0
-  itemName: ME
+  itemName: MRE
   itemSprite: {fileID: 0}
